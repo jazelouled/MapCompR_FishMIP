@@ -44,13 +44,6 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
       rasterVariable_mean = mean(rasterVariable)
     )
 
-  # Function to add a black border and white background to a ggplot object
-  add_black_border <- function(p) {
-    p + theme(
-      panel.border = element_rect(color = "black", size = 1),
-      plot.background = element_rect(fill = "white")
-    )
-  }
 
   # Create temporal comparison plot
   plot_temporal <- ggplot(df_mean) +
@@ -58,9 +51,9 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
     geom_smooth(aes(year, predicted_mean), method = "loess", color = "blue") +
     geom_point(aes(year, observed_mean), color = "red") +
     geom_smooth(aes(year, observed_mean), method = "loess", color = "red") +
-    labs(x = "Year", y = "Fish Biomass", title = "Temporal Comparison")
-
-  plot_temporal <- add_black_border(plot_temporal)
+    labs(x = "Year", y = "Fish Biomass", title = "Temporal Comparison") +
+    theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
+          panel.background = element_blank())
 
   # Create raster variable-wise comparison plot
   plot_rasterVariable <- ggplot(df_mean) +
@@ -68,17 +61,19 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
     geom_smooth(aes(rasterVariable_mean, predicted_mean), method = "loess", color = "blue") +
     geom_point(aes(rasterVariable_mean, observed_mean), color = "red") +
     geom_smooth(aes(rasterVariable_mean, observed_mean), method = "loess", color = "red") +
-    labs(x = "Mean Raster Variable", y = "Fish Biomass", title = "Raster Variable Comparison")
+    labs(x = "Mean Raster Variable", y = "Fish Biomass", title = "Raster Variable Comparison") +
+    theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
+          panel.background = element_blank())
 
-  plot_rasterVariable <- add_black_border(plot_rasterVariable)
 
   # Create observed vs. predicted scatter plot
   plot_vs <- ggplot(df_mean) +
     geom_point(aes(observed_mean, predicted_mean), color = "purple") +
     geom_smooth(aes(observed_mean, predicted_mean), method = "loess", color = "purple") +
-    labs(x = "Observed Biomass", y = "Predicted Biomass", title = "Observed vs. Predicted")
+    labs(x = "Observed Biomass", y = "Predicted Biomass", title = "Observed vs. Predicted") +
+    theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
+          panel.background = element_blank())
 
-  plot_vs <- add_black_border(plot_vs)
 
   # Arrange plots in a grid
   grid_arrange <- grid.arrange(plot_temporal, plot_rasterVariable, plot_vs, nrow = 3)
