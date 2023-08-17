@@ -38,7 +38,7 @@ obsPredBiomassDF <- function(observed, observedLon, observedLat, observedBiomass
 
     # Get the filename and month number from the predicted raster
     predictedRaster <- predicted[j]
-    fileName <- sub("\\..*", "", predictedRaster)
+    fileName <- sub("\\.asc$*", "", predictedRaster)
     fileName_ <- substr(fileName, nchar(fileName) - 4, nchar(fileName))
 
     # Load the predicted raster and divide values by 1000
