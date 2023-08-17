@@ -21,7 +21,7 @@
 #' taylor(observed, model1)
 #'
 #' @export
-taylor <- function(observed, predicted, by = NULL, by.class = NULL, panel = TRUE) {
+taylorD <- function(observed, predicted, by = NULL, by.class = NULL, panel = TRUE) {
 
   if (is.null(by)) {
 
