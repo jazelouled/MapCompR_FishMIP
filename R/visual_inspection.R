@@ -95,4 +95,4 @@ df <- data.frame(
 )
 
 # Calling the visual_inspection function
-visual_inspection(df, "biomass_observed", "biomass_predicted", "year", "rasterVariable")
+visual_inspection(df, "biomass_observed", "biomass_predicted", "year", "variable")
