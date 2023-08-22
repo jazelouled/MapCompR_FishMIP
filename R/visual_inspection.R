@@ -36,12 +36,16 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
   library(ggplot2)
   library(gridExtra)
 
+
+df <- data.frame(observed, predicted, year, rasterVariable)
+
+
   df_mean <- df %>%
     group_by(year) %>%
     summarize(
-      observed_mean = mean(biomass_observed),
-      predicted_mean = mean(biomass_predicted),
-      rasterVariable_mean = mean(variable)
+      observed_mean = mean(observed),
+      predicted_mean = mean(predicted),
+      rasterVariable_mean = mean(rasterVariable)
     )
 
 
