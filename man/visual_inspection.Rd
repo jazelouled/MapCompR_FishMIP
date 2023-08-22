@@ -33,9 +33,9 @@ df <- data.frame(
   year = rep(rep(years, each = 10), times = 3),
   biomass_observed = 100 - 0.5 * rep(years, each = 10) + rnorm(num_rows, sd = 10) + 1000,
   biomass_predicted = 95 - 0.5 * rep(years, each = 10) + rnorm(num_rows, sd = 5) + 1000,
-  rasterVariable = sample(0:2000, num_rows, replace = TRUE)
+  variable = sample(0:2000, num_rows, replace = TRUE)
 )
 # Calling the visual_inspection function
-visual_inspection(df, "biomass_observed", "biomass_predicted", "year", "rasterVariable")
+visual_inspection(df, "biomass_observed", "biomass_predicted", "year", "variable")
 
 }
