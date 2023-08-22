@@ -37,29 +37,29 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
   library(gridExtra)
 
   df_mean <- df %>%
-    group_by(year) %>%
+    group_by({{year}}) %>%
     summarize(
-      observed_mean = mean(.data[[observed]]),
-      predicted_mean = mean(.data[[predicted]]),
-      rasterVariable_mean = mean(.data[[rasterVariable]])
+      observed_mean = mean({{observed}}),
+      predicted_mean = mean({{predicted}}),
+      rasterVariable_mean = mean({{rasterVariable}})
     )
 
   # Create temporal comparison plot
   plot_temporal <- ggplot(df_mean) +
-    geom_point(aes_string(year, "predicted_mean"), color = "blue") +
-    geom_smooth(aes_string(year, "predicted_mean"), method = "loess", color = "blue") +
-    geom_point(aes_string(year, "observed_mean"), color = "red") +
-    geom_smooth(aes_string(year, "observed_mean"), method = "loess", color = "red") +
+    geom_point(aes({{year}}, predicted_mean), color = "blue") +
+    geom_smooth(aes({{year}}, predicted_mean), method = "loess", color = "blue") +
+    geom_point(aes({{year}}, observed_mean), color = "red") +
+    geom_smooth(aes({{year}}, observed_mean), method = "loess", color = "red") +
     labs(x = "Year", y = "Fish Biomass", title = "Temporal Comparison") +
     theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
           panel.background = element_blank())
 
   # Create raster variable-wise comparison plot
   plot_rasterVariable <- ggplot(df_mean) +
-    geom_point(aes_string(rasterVariable, "predicted_mean"), color = "blue") +
-    geom_smooth(aes_string(rasterVariable, "predicted_mean"), method = "loess", color = "blue") +
-    geom_point(aes_string(rasterVariable, "observed_mean"), color = "red") +
-    geom_smooth(aes_string(rasterVariable, "observed_mean"), method = "loess", color = "red") +
+    geom_point(aes(rasterVariable_mean, predicted_mean), color = "blue") +
+    geom_smooth(aes(rasterVariable_mean, predicted_mean), method = "loess", color = "blue") +
+    geom_point(aes(rasterVariable_mean, observed_mean), color = "red") +
+    geom_smooth(aes(rasterVariable_mean, observed_mean), method = "loess", color = "red") +
     labs(x = "Mean Raster Variable", y = "Fish Biomass", title = "Raster Variable Comparison") +
     theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
           panel.background = element_blank())
@@ -92,4 +92,4 @@ df <- data.frame(
 )
 
 # Calling the visual_inspection function
-visual_inspection(df, "biomass_observed", "biomass_predicted", "year", "variable")
+visual_inspection(df, biomass_observed, biomass_predicted, year, variable)
