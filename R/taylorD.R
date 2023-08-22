@@ -18,7 +18,7 @@
 #' model2 <- c(2, 4.5, 5, 7.2)
 #' predicted <- as.data.frame(cbind(model1, model2))
 #' year <- c(2000, 2000, 2001, 2001)
-#' taylor(observed, model1)
+#' taylorD(observed, model1)
 #'
 #' @export
 taylorD <- function(observed, predicted, by = NULL, by.class = NULL, panel = TRUE) {
