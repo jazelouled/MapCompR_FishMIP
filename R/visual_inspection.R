@@ -41,7 +41,7 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
     summarize(
       observed_mean = mean(biomass_observed),
       predicted_mean = mean(biomass_predicted),
-      rasterVariable_mean = mean(rasterVariable)
+      rasterVariable_mean = mean(variable)
     )
 
 
