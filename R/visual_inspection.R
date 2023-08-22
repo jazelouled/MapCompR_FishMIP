@@ -46,28 +46,33 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
 
   # Create temporal comparison plot
   plot_temporal <- ggplot(df_mean) +
-    geom_point(aes_string(year, "predicted_mean"), color = "blue") +
-    geom_smooth(aes_string(year, "predicted_mean"), method = "loess", color = "blue") +
-    geom_point(aes_string(year, "observed_mean"), color = "red") +
-    geom_smooth(aes_string(year, "observed_mean"), method = "loess", color = "red") +
+    geom_point(aes_string(year, "predicted_mean", color = "'Predicted'")) +
+    geom_smooth(aes_string(year, "predicted_mean", color = "'Predicted'"), method = "loess") +
+    geom_point(aes_string(year, "observed_mean", color = "'Observed'")) +
+    geom_smooth(aes_string(year, "observed_mean", color = "'Observed'"), method = "loess") +
     labs(x = "Year", y = "Fish Biomass", title = "Temporal Comparison") +
     theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
-          panel.background = element_blank())
+          panel.background = element_blank()) +
+    theme(legend.position = "right", legend.title = element_blank())+
+    scale_color_manual(values=c('red','blue'))
 
   # Create raster variable-wise comparison plot
   plot_rasterVariable <- ggplot(df_mean) +
-    geom_point(aes_string("rasterVariable_mean", "predicted_mean"), color = "blue") +
-    geom_smooth(aes_string("rasterVariable_mean", "predicted_mean"), method = "loess", color = "blue") +
-    geom_point(aes_string("rasterVariable_mean", "observed_mean"), color = "red") +
-    geom_smooth(aes_string("rasterVariable_mean", "observed_mean"), method = "loess", color = "red") +
+    geom_point(aes_string("rasterVariable_mean", "predicted_mean", color = "'Predicted'")) +
+    geom_smooth(aes_string("rasterVariable_mean", "predicted_mean", color = "'Predicted'"), method = "loess") +
+    geom_point(aes_string("rasterVariable_mean", "observed_mean", color = "'Observed'")) +
+    geom_smooth(aes_string("rasterVariable_mean", "observed_mean", color = "'Observed'"), method = "loess") +
     labs(x = "Mean Raster Variable", y = "Fish Biomass", title = "Raster Variable Comparison") +
     theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
-          panel.background = element_blank())
+          panel.background = element_blank()) +
+    theme(legend.position = "right", legend.title = element_blank())+
+    scale_color_manual(values=c('red','blue'))
+
 
   # Create observed vs. predicted scatter plot
   plot_vs <- ggplot(df_mean) +
     geom_point(aes_string("observed_mean", "predicted_mean"), color = "purple") +
-    geom_smooth(aes_string("observed_mean", "predicted_mean"), method = "loess", color = "purple") +
+    geom_smooth(aes_string("observed_mean", "predicted_mean"), color = "purple", method = "loess") +
     labs(x = "Observed Biomass", y = "Predicted Biomass", title = "Observed vs. Predicted") +
     theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
           panel.background = element_blank())
@@ -77,6 +82,8 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
 
   return(plots)
 }
+
+
 
 # Creating an example data frame with more natural fish biomass data and mean values
 set.seed(123)  # Set seed for reproducibility
