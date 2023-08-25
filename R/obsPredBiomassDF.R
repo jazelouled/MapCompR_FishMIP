@@ -42,7 +42,7 @@ obsPredBiomassDF <- function(observed, observedLon, observedLat, observedBiomass
     fileName_ <- substr(fileName, nchar(fileName) - 4, nchar(fileName))
 
     # Load the predicted raster and divide values by 1000
-    predictedRaster_ <- raster(predictedRaster) / 1000
+    predictedRaster_ <- raster(predictedRaster)
 
     # Convert month number to a date and extract the year
     numberMonth <- as.numeric(fileName_)
