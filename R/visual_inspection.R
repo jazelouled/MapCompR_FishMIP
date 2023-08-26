@@ -71,8 +71,8 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
 
   # Create observed vs. predicted scatter plot
   plot_vs <- ggplot(df_mean) +
-    geom_point(aes_string("observed_mean", "predicted_mean"), color = "slateblue") +
-    geom_smooth(aes_string("observed_mean", "predicted_mean"), color = "slateblue", method = "loess") +
+    geom_point(aes_string("observed_mean", "predicted_mean"), color = "darkred") +
+    geom_smooth(aes_string("observed_mean", "predicted_mean"), color = "darkred", method = "loess") +
     labs(x = "Observed Biomass", y = "Predicted Biomass", title = "Observed vs. Predicted") +
     theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
           panel.background = element_blank())
