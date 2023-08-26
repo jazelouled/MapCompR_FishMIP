@@ -17,3 +17,9 @@ A numeric value representing Kendall's tau.
 \description{
 Calculates Kendall's tau, a measure of rank correlation between predicted and observed values.
 }
+\examples{
+observed <- c(10, 15, 12, 8, 20)
+predicted <- c(12, 16, 10, 7, 18)
+model_efficiency(observed, predicted)
+
+}

@@ -6,6 +6,12 @@
 #' @param sampling_rate The sampling rate of the observed values.
 #' @return A data frame with Frequency and Amplitude columns.
 #' @export
+#'
+#' @examples
+#' observed <- c(10, 15, 12, 8, 20)
+#' predicted <- c(12, 16, 10, 7, 18)
+#' model_efficiency(observed, predicted)
+#'
 calculate_fastFourierTransform <- function(observed, sampling_rate) {
   n <- length(observed)
   freq <- (0:(n/2)) * (sampling_rate/n)

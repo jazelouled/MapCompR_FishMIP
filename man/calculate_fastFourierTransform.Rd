@@ -17,3 +17,9 @@ A data frame with Frequency and Amplitude columns.
 \description{
 Computes the amplitude spectrum using Fast Fourier Transform.
 }
+\examples{
+observed <- c(10, 15, 12, 8, 20)
+predicted <- c(12, 16, 10, 7, 18)
+model_efficiency(observed, predicted)
+
+}

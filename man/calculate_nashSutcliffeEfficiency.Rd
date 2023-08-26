@@ -17,3 +17,9 @@ A numeric value representing the Nash-Sutcliffe efficiency.
 \description{
 Evaluates the efficiency of a model by comparing predicted to observed values.
 }
+\examples{
+observed <- c(10, 15, 12, 8, 20)
+predicted <- c(12, 16, 10, 7, 18)
+model_efficiency(observed, predicted)
+
+}
