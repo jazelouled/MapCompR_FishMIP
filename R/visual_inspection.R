@@ -54,7 +54,7 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
     theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
           panel.background = element_blank()) +
     theme(legend.position = "right", legend.title = element_blank())+
-    scale_color_manual(values=c('red','blue'))
+    scale_color_manual(values=c('darkorange','dodgerblue'))
 
   # Create raster variable-wise comparison plot
   plot_rasterVariable <- ggplot(df_mean) +
@@ -66,7 +66,7 @@ visual_inspection <- function(df, observed, predicted, year, rasterVariable) {
     theme(panel.border = element_rect(color = "black", fill = NA, size = 1),
           panel.background = element_blank()) +
     theme(legend.position = "right", legend.title = element_blank())+
-    scale_color_manual(values=c('red','blue'))
+    scale_color_manual(values=c('darkorange','dodgerblue'))
 
 
   # Create observed vs. predicted scatter plot
