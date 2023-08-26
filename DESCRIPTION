@@ -1,6 +1,6 @@
 Package: MapCompR
 Type: Package
-Title: What the Package Does (Title Case)
+Title: A toolbox to analyse and compare spatiotemporal maps
 Version: 0.1.0
 Author: Jazel Ouled-Cheikh, Alba Fuster-Alonso, Laura Julià, Jeroen Steenbeek, Marta Coll
 Maintainer: The package maintainer <jazelouled@gmail.com>
