@@ -8,9 +8,10 @@
 #' @export
 #'
 #' @examples
-#' observed <- c(10, 15, 12, 8, 20)
-#' predicted <- c(12, 16, 10, 7, 18)
-#' model_efficiency(observed, predicted)
+#' observed <- c(10, 15, 12, 8, 20, 10, 15, 12, 8, 20)  # Simulated observed values
+#' sampling_rate <- 1  # Sampling rate in Hz
+#' fft_result <- fast_fourier_transform(observed, sampling_rate)
+#' plot(fft_result$Frequency, fft_result$Amplitude, type = 'l', xlab = 'Frequency', ylab = 'Amplitude')
 #'
 calculate_fastFourierTransform <- function(observed, sampling_rate) {
   n <- length(observed)

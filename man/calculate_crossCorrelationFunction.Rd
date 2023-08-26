@@ -20,6 +20,6 @@ Computes the cross-correlation function between observed and predicted time seri
 \examples{
 observed <- c(10, 15, 12, 8, 20)
 predicted <- c(12, 16, 10, 7, 18)
-model_efficiency(observed, predicted)
+calculate_crossCorrelationFunction(observed, predicted)
 
 }
